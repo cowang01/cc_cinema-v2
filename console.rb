@@ -82,5 +82,8 @@ Ticket.view_all()
 Film.view_all()
 Customer.view_all()
 
+second_customer_films = customer2.films()
+first_film_customers = film1.customers()
+
 binding.pry
 nil
