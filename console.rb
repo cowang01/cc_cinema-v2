@@ -44,30 +44,33 @@ film2 = Film.new({
   })
 film2.save()
 
-ticket1 = Ticket.new({
-  'customer_id' => customer1.id,
-  'film_id' => film2.id
-  })
-ticket1.save()
+# ticket1 = Ticket.new({
+#   'customer_id' => customer1.id,
+#   'film_id' => film2.id
+#   })
+# ticket1.save()
+ticket1 = customer1.sale(film2)
 
-ticket2 = Ticket.new({
-'customer_id' => customer2.id,
-'film_id' => film2.id
-})
-ticket2.save()
+# ticket2 = Ticket.new({
+# 'customer_id' => customer2.id,
+# 'film_id' => film2.id
+# })
+# ticket2.save()
+ticket2 = customer2.sale(film2)
 
-ticket3 = Ticket.new({
-'customer_id' => customer3.id,
-'film_id' => film1.id
-})
-ticket3.save()
+# ticket3 = Ticket.new({
+# 'customer_id' => customer3.id,
+# 'film_id' => film1.id
+# })
+# ticket3.save()
+ticket3 = customer3.sale(film1)
 
-ticket4 = Ticket.new({
-'customer_id' => customer4.id,
-'film_id' => film2.id
-})
-ticket4.save()
-
+# ticket4 = Ticket.new({
+# 'customer_id' => customer4.id,
+# 'film_id' => film2.id
+# })
+# ticket4.save()
+ticket4 = customer4.sale(film2)
 
 film2.price = 12
 film2.update()
@@ -78,12 +81,17 @@ customer4.update()
 ticket2.film_id = film1.id
 ticket2.update()
 
+#test
 Ticket.view_all()
 Film.view_all()
 Customer.view_all()
+#
 
-second_customer_films = customer2.films()
-first_film_customers = film1.customers()
+second_customer_films = customer2.films_list()
+first_film_customers = film1.customers_list()
+
+all_customers1 = film1.customer_count()
+customer1_tickets = customer1.films_list().count
 
 binding.pry
 nil
