@@ -47,5 +47,13 @@ class Film
     customers_list().count
   end
 
+  def show_times()
+    sql = "SELECT show_time FROM film_times WHERE film_id = $1"
+    values = [@id]
+    all_showtimes = Sql_Runner.run(sql, values)
+    all_times = all_showtimes.map { |showtime| Film_Time.new(showtime) }
+    return all_times.map { |time| time.show_time }
+  end
+
 #
 end
