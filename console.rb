@@ -59,6 +59,12 @@ film12_times = Film_Time.new({
   })
 film12_times.save()
 
+film13_times = Film_Time.new({
+  'film_id' => film1.id,
+  'show_time' => '12:00'
+  })
+film13_times.save()
+
 film21_times = Film_Time.new({
   'film_id' => film2.id,
   'show_time' => '14:30'

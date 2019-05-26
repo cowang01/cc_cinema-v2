@@ -48,12 +48,21 @@ class Film
   end
 
   def show_times()
-    sql = "SELECT show_time FROM film_times WHERE film_id = $1"
+    sql = "SELECT show_time FROM film_times WHERE film_id = $1 ORDER BY show_time ASC"
     values = [@id]
     all_showtimes = Sql_Runner.run(sql, values)
     all_times = all_showtimes.map { |showtime| Film_Time.new(showtime) }
     return all_times.map { |time| time.show_time }
   end
+
+  # def most_sold()
+  #   sql = "SELECT tickets.show_time_id, film_times.show_time FROM tickets INNER JOIN film_time ON show_time_id = film_time.id WHERE film_id = $1"
+  #   values = [@id]
+  #   films = Sql_Runner.run(sql, values)[0]
+  #   total_count = Hash.new(0)
+  #   most_sold = films.each { |count| total_count[count] += 1 }
+  #   return most_sold.values.max
+  # end
 
 #
 end

@@ -35,5 +35,6 @@ class Ticket
     values = [@customer_id, @show_time_id, @id]
     Sql_Runner.run(sql, values)
   end
+
 #
 end
