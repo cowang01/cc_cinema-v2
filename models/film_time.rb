@@ -36,4 +36,11 @@ class Film_Time
     Sql_Runner.run(sql, values)
   end
 
+  def price()
+    sql = "SELECT films.* FROM films WHERE films.id = $1"
+    values = [@film_id]
+    film = Sql_Runner.run(sql, values)[0]
+    return film['price'].to_i
+  end
+
 end

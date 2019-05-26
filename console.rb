@@ -76,28 +76,28 @@ film22_times.save()
 #   'film_id' => film2.id
 #   })
 # ticket1.save()
-ticket1 = customer1.sale(film2)
+ticket1 = customer1.sale(film22_times)
 
 # ticket2 = Ticket.new({
 # 'customer_id' => customer2.id,
 # 'film_id' => film2.id
 # })
 # ticket2.save()
-ticket2 = customer2.sale(film2)
+ticket2 = customer2.sale(film21_times)
 
 # ticket3 = Ticket.new({
 # 'customer_id' => customer3.id,
 # 'film_id' => film1.id
 # })
 # ticket3.save()
-ticket3 = customer3.sale(film1)
+ticket3 = customer3.sale(film11_times)
 
 # ticket4 = Ticket.new({
 # 'customer_id' => customer4.id,
 # 'film_id' => film2.id
 # })
 # ticket4.save()
-ticket4 = customer4.sale(film2)
+ticket4 = customer4.sale(film22_times)
 
 film2.price = 12
 film2.update()
@@ -105,7 +105,7 @@ film2.update()
 customer4.funds = 20
 customer4.update()
 
-ticket2.film_id = film1.id
+ticket2.show_time_id = film22_times.id
 ticket2.update()
 
 #test

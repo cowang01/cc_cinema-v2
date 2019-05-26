@@ -37,19 +37,21 @@ class Customer
   end
 
   def films_list()
-    sql = "SELECT films.* from films INNER JOIN tickets ON films.id = tickets.film_id WHERE customer_id = $1"
+    sql = "SELECT films.* from films INNER JOIN film_times ON films.id = film_times.film_id INNER JOIN tickets ON show_time_id = film_times.id WHERE customer_id = $1"
     values = [@id]
     films = Sql_Runner.run(sql, values)
     return films.map { |film| Film.new(film) }
   end
 
-  def sale(film)
+  def sale(time)
     ticket = Ticket.new({
       'customer_id' => @id,
-      'film_id' => film.id
+      'show_time_id' => time.id
       })
     ticket.save()
-    @funds -= film.price
+    @funds -= time.price()
+    update()
+    # @funds -= film.price
     return ticket
   end
 
